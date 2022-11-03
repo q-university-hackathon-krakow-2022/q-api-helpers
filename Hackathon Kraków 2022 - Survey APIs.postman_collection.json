@@ -1,0 +1,863 @@
+{
+	"info": {
+		"_postman_id": "62eabeb8-4c35-4823-adcc-846b983e91fe",
+		"name": "Hackathon Kraków 2022 - Survey APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Surveys CRUD API",
+			"item": [
+				{
+					"name": "Get a survey",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-API-TOKEN",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "https://g1-iad.qualtrics.com/API/v3/surveys/{{surveyId}}",
+							"protocol": "https",
+							"host": [
+								"g1-iad",
+								"qualtrics",
+								"com"
+							],
+							"path": [
+								"API",
+								"v3",
+								"surveys",
+								"{{surveyId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update survey",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "X-API-TOKEN",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"New name lol\",\n  \"isActive\": true,\n  \"expiration\": {\n    \"startDate\": \"2019-08-24T14:15:22Z\",\n    \"endDate\": \"2023-08-24T14:15:22Z\"\n  }\n}"
+						},
+						"url": {
+							"raw": "https://g1-iad.qualtrics.com/API/v3/surveys/{{surveyId}}",
+							"protocol": "https",
+							"host": [
+								"g1-iad",
+								"qualtrics",
+								"com"
+							],
+							"path": [
+								"API",
+								"v3",
+								"surveys",
+								"{{surveyId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete survey",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "X-API-TOKEN",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://g1-iad.qualtrics.com/API/v3/surveys/{{surveyId}}",
+							"protocol": "https",
+							"host": [
+								"g1-iad",
+								"qualtrics",
+								"com"
+							],
+							"path": [
+								"API",
+								"v3",
+								"surveys",
+								"{{surveyId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List surveys",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-API-TOKEN",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://g1-iad.qualtrics.com/API/v3/surveys",
+							"protocol": "https",
+							"host": [
+								"g1-iad",
+								"qualtrics",
+								"com"
+							],
+							"path": [
+								"API",
+								"v3",
+								"surveys"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insert Embedded Data fields",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-API-TOKEN",
+								"value": "{{token}}",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\n    \"embeddedDataFields\": [\n        {\n        \"key\": \"exampleField\",\n        \"value\": \"exampleValue\",\n        \"type\": \"text\"\n        }\n    ]\n  }"
+						},
+						"url": {
+							"raw": "https://g1-iad.qualtrics.com/API/v3/surveys/{{surveyId}}/embeddeddatafields",
+							"protocol": "https",
+							"host": [
+								"g1-iad",
+								"qualtrics",
+								"com"
+							],
+							"path": [
+								"API",
+								"v3",
+								"surveys",
+								"{{surveyId}}",
+								"embeddeddatafields"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Survey Responses",
+			"item": [
+				{
+					"name": "Update a response",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Idempotency-Key",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "X-API-TOKEN",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"surveyId\": \"{{surveyId}}\",\n  \"resetRecordedDate\": true,\n  \"embeddedData\": {\n    \"property1\": \"string\",\n    \"property2\": \"string\"\n  }\n}"
+						},
+						"url": {
+							"raw": "https://g1-iad.qualtrics.com/API/v3/responses/R_42P9XASoJy9rZiK",
+							"protocol": "https",
+							"host": [
+								"g1-iad",
+								"qualtrics",
+								"com"
+							],
+							"path": [
+								"API",
+								"v3",
+								"responses",
+								"R_42P9XASoJy9rZiK"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a response",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Idempotency-Key",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "X-API-TOKEN",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"values\": {\n    \"distributionChannel\": \"string\",\n    \"duration\": 0,\n    \"endDate\": \"2019-08-24T14:15:22Z\",\n    \"finished\": 0,\n    \"progress\": 0,\n    \"startDate\": \"2019-08-24T14:15:22Z\",\n    \"userLanguage\": \"string\"\n  }\n}"
+						},
+						"url": {
+							"raw": "https://g1-iad.qualtrics.com/API/v3/surveys/{{surveyId}}/responses",
+							"protocol": "https",
+							"host": [
+								"g1-iad",
+								"qualtrics",
+								"com"
+							],
+							"path": [
+								"API",
+								"v3",
+								"surveys",
+								"{{surveyId}}",
+								"responses"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a response",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-API-TOKEN",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "https://g1-iad.qualtrics.com/API/v3/surveys/{{surveyId}}/responses/R_77BwKqXwGUtrYjQ",
+							"protocol": "https",
+							"host": [
+								"g1-iad",
+								"qualtrics",
+								"com"
+							],
+							"path": [
+								"API",
+								"v3",
+								"surveys",
+								"{{surveyId}}",
+								"responses",
+								"R_77BwKqXwGUtrYjQ"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a response",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-API-TOKEN",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "https://g1-iad.qualtrics.com/API/v3/surveys/{{surveyId}}/responses/R_77BwKqXwGUtrYjQ",
+							"protocol": "https",
+							"host": [
+								"g1-iad",
+								"qualtrics",
+								"com"
+							],
+							"path": [
+								"API",
+								"v3",
+								"surveys",
+								"{{surveyId}}",
+								"responses",
+								"R_77BwKqXwGUtrYjQ"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve survey JSON schema",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-API-TOKEN",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "https://g1-iad.qualtrics.com/API/v3/surveys/{{surveyId}}/responses/R_77BwKqXwGUtrYjQ",
+							"protocol": "https",
+							"host": [
+								"g1-iad",
+								"qualtrics",
+								"com"
+							],
+							"path": [
+								"API",
+								"v3",
+								"surveys",
+								"{{surveyId}}",
+								"responses",
+								"R_77BwKqXwGUtrYjQ"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Qualtrics Survey API",
+			"item": [
+				{
+					"name": "Delete a survey",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-API-TOKEN",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "https://g1-iad.qualtrics.com/API/v3/survey-definitions",
+							"protocol": "https",
+							"host": [
+								"g1-iad",
+								"qualtrics",
+								"com"
+							],
+							"path": [
+								"API",
+								"v3",
+								"survey-definitions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a survey",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-API-TOKEN",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"SurveyName\": \"toDelete\",\n  \"Language\": \"EN\",\n  \"ProjectCategory\": \"CORE\"\n}"
+						},
+						"url": {
+							"raw": "https://g1-iad.qualtrics.com/API/v3/survey-definitions",
+							"protocol": "https",
+							"host": [
+								"g1-iad",
+								"qualtrics",
+								"com"
+							],
+							"path": [
+								"API",
+								"v3",
+								"survey-definitions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a survey",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-API-TOKEN",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "https://g1-iad.qualtrics.com/API/v3/survey-definitions/{{surveyId}}",
+							"protocol": "https",
+							"host": [
+								"g1-iad",
+								"qualtrics",
+								"com"
+							],
+							"path": [
+								"API",
+								"v3",
+								"survey-definitions",
+								"{{surveyId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update survey metadata",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-API-TOKEN",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"SurveyName\": \"lololo\",\n  \"SurveyDescription\": \"desc\",\n  \"SurveyStatus\": \"Active\"\n}"
+						},
+						"url": {
+							"raw": "https://g1-iad.qualtrics.com/API/v3/survey-definitions/{{surveyId}}/metadata",
+							"protocol": "https",
+							"host": [
+								"g1-iad",
+								"qualtrics",
+								"com"
+							],
+							"path": [
+								"API",
+								"v3",
+								"survey-definitions",
+								"{{surveyId}}",
+								"metadata"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get survey metadata",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-API-TOKEN",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "https://g1-iad.qualtrics.com/API/v3/survey-definitions/{{surveyId}}/metadata",
+							"protocol": "https",
+							"host": [
+								"g1-iad",
+								"qualtrics",
+								"com"
+							],
+							"path": [
+								"API",
+								"v3",
+								"survey-definitions",
+								"{{surveyId}}",
+								"metadata"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a question",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-API-TOKEN",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ChoiceOrder\": [\n    \"string\"\n  ],\n  \"Choices\": {\n    \"property1\": {\n      \"Display\": \"string\"\n    },\n    \"property2\": {\n      \"Display\": \"string\"\n    }\n  },\n  \"Configuration\": {\n    \"QuestionDescriptionOption\": \"UseText\",\n    \"TextPosition\": \"inline\",\n    \"ChoiceColumnWidth\": 25,\n    \"RepeatHeaders\": \"none\",\n    \"WhiteSpace\": \"ON\",\n    \"LabelPosition\": \"BELOW\",\n    \"NumColumns\": 0,\n    \"MobileFirst\": true\n  },\n  \"DataExportTag\": \"string\",\n  \"Language\": [],\n  \"NextAnswerId\": 0,\n  \"NextChoiceId\": 0,\n  \"QuestionDescription\": \"string\",\n  \"QuestionID\": \"string\",\n  \"QuestionText\": \"string\",\n  \"QuestionType\": \"MC\",\n  \"Randomization\": \"string\",\n  \"RecodeValues\": {\n    \"1\": \"1\",\n    \"2\": \"2\",\n    \"3\": \"-1000\"\n  },\n  \"Selector\": \"DL\",\n  \"SubSelector\": \"GR\",\n  \"Validation\": {\n    \"Settings\": {\n      \"CustomValidation\": {\n        \"Logic\": {\n          \"Type\": \"BooleanExpression\",\n          \"property1\": {\n            \"ChoiceLocator\": \"string\",\n            \"LogicType\": \"Question\",\n            \"Operator\": \"Selected\",\n            \"QuestionID\": \"string\",\n            \"QuestionIsInLoop\": \"yes\",\n            \"Type\": \"Expression\"\n          },\n          \"property2\": {\n            \"ChoiceLocator\": \"string\",\n            \"LogicType\": \"Question\",\n            \"Operator\": \"Selected\",\n            \"QuestionID\": \"string\",\n            \"QuestionIsInLoop\": \"yes\",\n            \"Type\": \"Expression\"\n          }\n        },\n        \"Message\": {\n          \"description\": \"string\",\n          \"libraryID\": \"string\",\n          \"messageID\": \"string\",\n          \"subMessageID\": \"VE_FORCE_RESPONSE\"\n        }\n      },\n      \"ForceResponse\": \"string\",\n      \"ForceResponseType\": \"string\",\n      \"Type\": \"string\"\n    }\n  }\n}"
+						},
+						"url": {
+							"raw": "https://g1-iad.qualtrics.com/API/v3/survey-definitions/{{surveyId}}/questions",
+							"protocol": "https",
+							"host": [
+								"g1-iad",
+								"qualtrics",
+								"com"
+							],
+							"path": [
+								"API",
+								"v3",
+								"survey-definitions",
+								"{{surveyId}}",
+								"questions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get question",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-API-TOKEN",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ChoiceOrder\": [\n    \"string\"\n  ],\n  \"Choices\": {\n    \"property1\": {\n      \"Display\": \"string\"\n    },\n    \"property2\": {\n      \"Display\": \"string\"\n    }\n  },\n  \"Configuration\": {\n    \"QuestionDescriptionOption\": \"UseText\",\n    \"TextPosition\": \"inline\",\n    \"ChoiceColumnWidth\": 25,\n    \"RepeatHeaders\": \"none\",\n    \"WhiteSpace\": \"ON\",\n    \"LabelPosition\": \"BELOW\",\n    \"NumColumns\": 0,\n    \"MobileFirst\": true\n  },\n  \"DataExportTag\": \"string\",\n  \"Language\": [],\n  \"NextAnswerId\": 0,\n  \"NextChoiceId\": 0,\n  \"QuestionDescription\": \"string\",\n  \"QuestionID\": \"string\",\n  \"QuestionText\": \"string\",\n  \"QuestionType\": \"MC\",\n  \"Randomization\": \"string\",\n  \"RecodeValues\": {\n    \"1\": \"1\",\n    \"2\": \"2\",\n    \"3\": \"-1000\"\n  },\n  \"Selector\": \"DL\",\n  \"SubSelector\": \"GR\",\n  \"Validation\": {\n    \"Settings\": {\n      \"CustomValidation\": {\n        \"Logic\": {\n          \"Type\": \"BooleanExpression\",\n          \"property1\": {\n            \"ChoiceLocator\": \"string\",\n            \"LogicType\": \"Question\",\n            \"Operator\": \"Selected\",\n            \"QuestionID\": \"string\",\n            \"QuestionIsInLoop\": \"yes\",\n            \"Type\": \"Expression\"\n          },\n          \"property2\": {\n            \"ChoiceLocator\": \"string\",\n            \"LogicType\": \"Question\",\n            \"Operator\": \"Selected\",\n            \"QuestionID\": \"string\",\n            \"QuestionIsInLoop\": \"yes\",\n            \"Type\": \"Expression\"\n          }\n        },\n        \"Message\": {\n          \"description\": \"string\",\n          \"libraryID\": \"string\",\n          \"messageID\": \"string\",\n          \"subMessageID\": \"VE_FORCE_RESPONSE\"\n        }\n      },\n      \"ForceResponse\": \"string\",\n      \"ForceResponseType\": \"string\",\n      \"Type\": \"string\"\n    }\n  }\n}"
+						},
+						"url": {
+							"raw": "https://g1-iad.qualtrics.com/API/v3/survey-definitions/{{surveyId}}/questions/{{questionId}}",
+							"protocol": "https",
+							"host": [
+								"g1-iad",
+								"qualtrics",
+								"com"
+							],
+							"path": [
+								"API",
+								"v3",
+								"survey-definitions",
+								"{{surveyId}}",
+								"questions",
+								"{{questionId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update question",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-API-TOKEN",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "https://g1-iad.qualtrics.com/API/v3/survey-definitions/{{surveyId}}/questions/{{questionId}}",
+							"protocol": "https",
+							"host": [
+								"g1-iad",
+								"qualtrics",
+								"com"
+							],
+							"path": [
+								"API",
+								"v3",
+								"survey-definitions",
+								"{{surveyId}}",
+								"questions",
+								"{{questionId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete question",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-API-TOKEN",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "https://g1-iad.qualtrics.com/API/v3/survey-definitions/{{surveyId}}/questions/{{questionIdToDelete}}",
+							"protocol": "https",
+							"host": [
+								"g1-iad",
+								"qualtrics",
+								"com"
+							],
+							"path": [
+								"API",
+								"v3",
+								"survey-definitions",
+								"{{surveyId}}",
+								"questions",
+								"{{questionIdToDelete}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get questions",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-API-TOKEN",
+								"value": "{{token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"ChoiceOrder\": [\n    \"string\"\n  ],\n  \"Choices\": {\n    \"property1\": {\n      \"Display\": \"string\"\n    },\n    \"property2\": {\n      \"Display\": \"string\"\n    }\n  },\n  \"Configuration\": {\n    \"QuestionDescriptionOption\": \"UseText\",\n    \"TextPosition\": \"inline\",\n    \"ChoiceColumnWidth\": 25,\n    \"RepeatHeaders\": \"none\",\n    \"WhiteSpace\": \"ON\",\n    \"LabelPosition\": \"BELOW\",\n    \"NumColumns\": 0,\n    \"MobileFirst\": true\n  },\n  \"DataExportTag\": \"string\",\n  \"Language\": [],\n  \"NextAnswerId\": 0,\n  \"NextChoiceId\": 0,\n  \"QuestionDescription\": \"string\",\n  \"QuestionID\": \"string\",\n  \"QuestionText\": \"string\",\n  \"QuestionType\": \"MC\",\n  \"Randomization\": \"string\",\n  \"RecodeValues\": {\n    \"1\": \"1\",\n    \"2\": \"2\",\n    \"3\": \"-1000\"\n  },\n  \"Selector\": \"DL\",\n  \"SubSelector\": \"GR\",\n  \"Validation\": {\n    \"Settings\": {\n      \"CustomValidation\": {\n        \"Logic\": {\n          \"Type\": \"BooleanExpression\",\n          \"property1\": {\n            \"ChoiceLocator\": \"string\",\n            \"LogicType\": \"Question\",\n            \"Operator\": \"Selected\",\n            \"QuestionID\": \"string\",\n            \"QuestionIsInLoop\": \"yes\",\n            \"Type\": \"Expression\"\n          },\n          \"property2\": {\n            \"ChoiceLocator\": \"string\",\n            \"LogicType\": \"Question\",\n            \"Operator\": \"Selected\",\n            \"QuestionID\": \"string\",\n            \"QuestionIsInLoop\": \"yes\",\n            \"Type\": \"Expression\"\n          }\n        },\n        \"Message\": {\n          \"description\": \"string\",\n          \"libraryID\": \"string\",\n          \"messageID\": \"string\",\n          \"subMessageID\": \"VE_FORCE_RESPONSE\"\n        }\n      },\n      \"ForceResponse\": \"string\",\n      \"ForceResponseType\": \"string\",\n      \"Type\": \"string\"\n    }\n  }\n}"
+						},
+						"url": {
+							"raw": "https://g1-iad.qualtrics.com/API/v3/survey-definitions/{{surveyId}}/questions/",
+							"protocol": "https",
+							"host": [
+								"g1-iad",
+								"qualtrics",
+								"com"
+							],
+							"path": [
+								"API",
+								"v3",
+								"survey-definitions",
+								"{{surveyId}}",
+								"questions",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Surveys Response Export API",
+			"item": [
+				{
+					"name": "Start response export",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-API-TOKEN",
+								"value": "{{token}}",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"format\": \"json\",\n  \"compress\": false\n}"
+						},
+						"url": {
+							"raw": "https://g1-iad.qualtrics.com/API/v3/surveys/{{surveyId}}/export-responses",
+							"protocol": "https",
+							"host": [
+								"g1-iad",
+								"qualtrics",
+								"com"
+							],
+							"path": [
+								"API",
+								"v3",
+								"surveys",
+								"{{surveyId}}",
+								"export-responses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get response export progress",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "X-API-TOKEN",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://g1-iad.qualtrics.com/API/v3/surveys/{{surveyId}}/export-responses/{{exportProgressId}}",
+							"protocol": "https",
+							"host": [
+								"g1-iad",
+								"qualtrics",
+								"com"
+							],
+							"path": [
+								"API",
+								"v3",
+								"surveys",
+								"{{surveyId}}",
+								"export-responses",
+								"{{exportProgressId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get response export file",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "X-API-TOKEN",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://g1-iad.qualtrics.com/API/v3/surveys/{{surveyId}}/export-responses/{{fileId}}/file",
+							"protocol": "https",
+							"host": [
+								"g1-iad",
+								"qualtrics",
+								"com"
+							],
+							"path": [
+								"API",
+								"v3",
+								"surveys",
+								"{{surveyId}}",
+								"export-responses",
+								"{{fileId}}",
+								"file"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
