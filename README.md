@@ -27,7 +27,9 @@ We decided to share with you following APIs:
 1. Download [postman](https://www.postman.com/downloads/)
 2. Download `Hackathon Kraków 2022 - Survey APIs.postman_collection.json` from this repo
 3. Import the configuration using the `Import` button:
-4. Create a new environment, and inside of it use following variables (you will receive token at the start of the hackathon):
+<img width="381" alt="image" src="https://user-images.githubusercontent.com/52859917/199741125-9b4e590f-9c2b-478a-b366-ab27f91c12ec.png">
+4. Create a new environment, and inside of it use following variables (you will receive token at the start of the hackathon) (values are just an example, you would need to create your own survey and use its surveyId etc...):
+<img width="1122" alt="image" src="https://user-images.githubusercontent.com/52859917/199741241-7c8902a6-0abb-4197-bd28-4d36c034ee14.png">
 5. You should be able to send requests now!
 
 ## FAQ
